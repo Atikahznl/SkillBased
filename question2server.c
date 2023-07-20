@@ -21,19 +21,16 @@ int main() {
         exit(1);
     }
 
-    // Set up the server
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(SERVER_PORT);
     server_addr.sin_addr.s_addr = INADDR_ANY;
 
-    // Bind the socket to the server address
     if (bind(serverSocket, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
         perror("Binding failed");
         close(serverSocket);
         exit(1);
     }
 
-    // Listen for incoming connections
     listen(serverSocket, 5);
     printf("Server listening on port %d...\n", SERVER_PORT);
 
@@ -51,7 +48,6 @@ int main() {
         // Generate a random number between 100 and 999
         int randomNumber = rand() % 900 + 100;
 
-        // Send the random number to the client
         send(clientSocket, &randomNumber, sizeof(randomNumber), 0);
         printf("Sent random to the client: %d\n", randomNumber);
 
