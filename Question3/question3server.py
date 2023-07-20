@@ -3,7 +3,7 @@ import socket
 SERVER_PORT = 8888
 
 def bar_to_atm(pressureBar):
-    return pressureBar / 1.01325
+    return pressureBar *0.986923
 
 def main():
     serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,3 +24,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
